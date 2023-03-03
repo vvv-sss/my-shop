@@ -1,0 +1,29 @@
+header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-right: -2rem;
+    @include glass-effect-background;
+    border-radius: 10rem 0 0 10rem;
+
+    img {
+        width: 2rem;
+        height: 2rem;
+        filter: brightness(0) saturate(100%) invert(52%) sepia(1%) saturate(381%) hue-rotate(22deg) brightness(96%) contrast(93%);
+        opacity: 0.5;
+    }
+
+    h1 {
+        padding-right: 1rem;
+        border-right: 1px solid gray;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    h2 {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+}

@@ -1,0 +1,121 @@
+.product-view {
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+
+    div {
+        display: flex;
+        justify-content: end;
+
+        button {
+            background-color: transparent;
+            border: none;
+            margin-right: 0.5rem;
+            color: gray;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+    }
+
+    img {
+        margin: 0 auto;
+        border-radius: 1rem;
+    }
+
+    .edit-product-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .edit-file-upload {
+            display: flex;
+            flex-direction: column;
+            margin: 1rem;
+
+            input[type="file"] {
+                display: none;
+            }
+
+            label {
+                cursor: pointer;
+            }
+        }
+
+        
+
+        .edit-form__name {
+            width: fit-content;
+            padding: 0.5rem;
+            padding-left: 2rem;
+            margin: 0.5rem;
+            background-color: white;
+            border: none;
+            border-radius: 10rem;
+            outline: none;
+        }
+
+        .edit-form__input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            padding: 0.5rem;
+            padding-left: 2rem;
+            margin: 0.5rem;
+            background-color: white;
+            border-radius: 10rem;
+
+            .edit-form__number {
+                width: 5rem;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                margin-left: 0.5rem;
+            }
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+
+            li {
+                width: fit-content;
+                padding: 0.5rem;
+                padding-left: 2rem;
+                background-color: white;
+                border-radius: 2rem;
+                text-align: center;
+            }
+
+            button {
+                background-color: transparent;
+                border: none;
+                color: gray;
+                cursor: pointer;
+                margin-bottom: 1rem;
+            }
+        }  
+
+        textarea {
+            padding: 0.5rem;
+            border: 1px solid gray;
+            border-radius: 1.5rem;
+        }
+    
+        .edit-form__btn-container {
+            display: flex;
+            justify-content: end;
+
+            button {
+                padding: 0.5rem;
+                border: 1px solid gray;
+                border-radius: 0.5rem;
+                margin-top: 1.5rem;
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+}

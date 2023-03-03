@@ -1,0 +1,50 @@
+.product-list {
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+    @include glass-effect-background;
+    padding: 1rem;
+
+    select {
+        width: 10rem;
+        color: gray;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    ul {
+        padding: 0;
+        margin-top: 1rem;
+
+        li {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 18rem 4rem 1fr;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            list-style: none;
+            cursor: default;
+
+            &:hover {
+                background: hsla(0, 0%, 100%, 0.6);
+            }
+
+            div{
+                display: flex;
+                justify-content: end;
+
+                button {
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    margin-right: 1rem;
+                    color: gray;
+                    cursor: pointer;
+                }
+            }
+        }
+    }    
+}
+
