@@ -1,10 +1,65 @@
-// Mixins ***************************************************
+// ___Colors__________________________________________________________________________________________________________
+$color-white: hsl(0, 0%, 100%);
+$color-white-faded: hsl(0, 0%, 75%);
+$color-light-gray: hsl(0, 0%, 50%);
+$color-dark-gray: hsl(0, 0%, 25%);
+
+$color-hover-white: hsla(0, 0%, 100%, 0.6);
+
+$color-for-filter-white: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(853%) hue-rotate(183deg) brightness(116%) contrast(100%);
+$color-for-filter-light-gray: brightness(0) saturate(100%) invert(53%) sepia(9%) saturate(6%) hue-rotate(327deg) brightness(92%) contrast(86%);
+
+$light-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+$violet-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+// ___Typography______________________________________________________________________________________________________
+$font-size-S: 0.85rem;
+$font-size-M: 1rem;
+$font-size-L: 1.5rem;
+$font-size-XL: 3rem;
+
+// ___Mixins___________________________________________________________________________________________________________
 
 @mixin glass-effect-background {
     background: hsla(0, 0%, 100%, 0.2);
     border-radius: 1rem;
-    box-shadow: 0 0.25rem 1.88rem hsla(0, 0%, 0%, 0.1);
+    -webkit-box-shadow: 0 0.25rem 1.88rem hsla(0, 0%, 0%, 0.1);
+            box-shadow: 0 0.25rem 1.88rem hsla(0, 0%, 0%, 0.1);
     backdrop-filter: blur(0.3rem);
     -webkit-backdrop-filter: blur(0.3rem);
     border: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+
+@mixin input-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+@mixin label {
+    padding-left: 1rem;
+    color: $color-white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@mixin input {
+    width: 75%;
+    max-width: 30rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 10rem;
+    outline: none;
+    text-align: center;
+    background-image: $light-gradient;
+    color: $color-dark-gray;
 }

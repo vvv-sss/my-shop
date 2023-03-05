@@ -1,42 +1,75 @@
 aside {
-    max-width: 20rem;
-    margin-bottom: 2rem;
+    -ms-flex-preferred-size: 17.5rem;
+    flex-basis: 17.5rem;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    margin: 1rem;
+    margin-top: 0;
 
-    .total-products {
+    .total-products,
+    .total-products-qty {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+                align-items: center;
         width: 100%;
-        margin-bottom: 1rem;
-        align-items: center;
-        @include glass-effect-background;
         padding: 1rem;
+        margin-bottom: 1rem;
+        @include glass-effect-background;
 
         h3 {
-            flex-basis: 50%;
+            -ms-flex-preferred-size: 50%;
+                flex-basis: 50%;
             font-weight: 400;
         }
 
         span {
-            flex-basis: 50%;
-            font-size: 3rem;
+            -ms-flex-preferred-size: 50%;
+                flex-basis: 50%;
+            font-size: $font-size-XL;
             font-weight: 300;
             text-align: center;
+            color: $color-light-gray;
         }
     }
 
+    #product-list-btn,
     #btn-add-product {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+                align-items: center;
         width: 100%;
         height: 5rem;
-        background-color: transparent;
-        border: 1px solid grey;
-        border-radius: 1rem;
-        @include glass-effect-background;
         padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid $color-light-gray;
+        border-radius: 1rem;
+        background-color: transparent;
+        color: $color-dark-gray;
+        font-weight: 600;
+        @include glass-effect-background;
         cursor: pointer;
+        -webkit-transition: 0.2s;
+        -o-transition: 0.2s;
         transition: 0.2s;
 
         &:hover {
-            background: hsla(0, 0%, 100%, 0.6);
+            background: $color-hover-white;
+        }
+
+        img {
+            display: inline-block;
+            width: 1.5rem;
+            margin-right: 0.5rem;
+            filter: $color-for-filter-light-gray;
         }
     }
 }

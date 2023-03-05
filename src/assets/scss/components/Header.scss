@@ -1,29 +1,22 @@
 header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+            align-items: center;
     gap: 1rem;
+    width: 100%;
     padding: 1rem;
-    margin-bottom: 1rem;
-    margin-right: -2rem;
-    @include glass-effect-background;
-    border-radius: 10rem 0 0 10rem;
-
-    img {
-        width: 2rem;
-        height: 2rem;
-        filter: brightness(0) saturate(100%) invert(52%) sepia(1%) saturate(381%) hue-rotate(22deg) brightness(96%) contrast(93%);
-        opacity: 0.5;
-    }
+    margin: 1rem 0 1rem -1rem;
+    border-radius: 0 10rem 10rem 0;
+    background-image: $violet-gradient;
 
     h1 {
-        padding-right: 1rem;
-        border-right: 1px solid gray;
-        font-size: 1rem;
+        margin-left: 2rem;
+        font-family: 'Pacifico', cursive;
+        font-size: $font-size-L;
         font-weight: 400;
-    }
-
-    h2 {
-        font-size: 1rem;
-        font-weight: 400;
+        color: $color-white;
     }
 }

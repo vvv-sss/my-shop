@@ -1,0 +1,11 @@
+.width-input-container {
+    @include input-container;
+
+    label {
+        @include label
+    }
+
+    input {
+        @include input;
+    }
+}

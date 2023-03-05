@@ -1,0 +1,73 @@
+.edit-product-form {
+    width: 100%;
+    padding: 1rem;
+    padding-bottom: 2rem;;
+    border-radius: 3rem;
+    margin-right: -3rem;
+    margin-bottom: 3rem;
+    -webkit-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    background-image: $violet-gradient;
+
+    span {
+        display: block;
+        width: 75%;
+        max-width: 30rem;
+        margin-top: 0.5rem;
+        margin-left: 1.25rem;
+        color: $color-white-faded;
+        font-size: $font-size-S;
+        font-style: italic;
+    }
+
+    .edit-product-form__info {
+        display: block;
+        width: 75%;
+        padding-right: 1rem;
+        max-width: 30rem;
+        margin-top: -1rem;
+        margin-left: 1rem;
+        color: $color-white-faded;
+        text-align: right;
+        font-size: $font-size-M;
+    }
+
+    .edit-product-form__comments {
+        width: 75%;
+        max-width: 30rem;
+        padding: 0;
+        margin: 2rem 0 2rem 1.5rem;
+        color: $color-white;
+        font-weight: 700;
+
+        li {
+            padding-left: 1rem;
+            border-left: 2px solid $color-white;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            list-style: none;
+
+            &:nth-of-type(1) {
+                margin-top: 1rem;
+            }
+
+            button {
+                display: block;
+                border: none;
+                margin-top: 0.5rem;
+                background-color: transparent;
+                color: $color-white-faded;
+                font-size: $font-size-S;
+                font-style: italic;
+                cursor: pointer;
+                -webkit-transition: 0.2s;
+                -o-transition: 0.2s;
+                transition: 0.2s;
+
+                &:hover {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+}

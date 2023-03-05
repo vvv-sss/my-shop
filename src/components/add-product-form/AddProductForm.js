@@ -1,128 +1,86 @@
-import React from "react";
-import { useState, useContext } from "react";
-import { addProductContext } from "../../App";
+// ___React___________________________________________________________________________________________________________
+import React, { useState, useEffect } from "react";
+// ___Redux___________________________________________________________________________________________________________
 import { useSelector, useDispatch } from 'react-redux';
-import { setImageUrl, setName, setCount, setWidth, setHeight, setWeight, setComments } from './addProductSlice';
-import { db, storage } from '../../firebase-config';
-import { collection, addDoc } from 'firebase/firestore';
-import { ref, uploadBytes } from 'firebase/storage';
+import { setInitialState, setProductId, setImageUrl, setName, setCount, setWidth, setHeight, setWeight, setComment } from './addProductFormSlice';
+import { setCommentId, setProductIdForComment } from '../add-comment-input/addCommentSlice';
+// ___Framer Motion___________________________________________________________________________________________________
+import { motion } from "framer-motion";
+// ___Components______________________________________________________________________________________________________
+import FileInput from '../form/FileInput';
+import NameInput from '../form/NameInput';
+import CountInput from '../form/CountInput';
+import WidthInput from '../form/WidthInput';
+import HeightInput from '../form/HeightInput';
+import WeightInput from '../form/WeightInput';
+import CommentInput from "../add-comment-input/AddComment";
+import FormBtns from "../form/FormBtns";
+// ___Helpers_________________________________________________________________________________________________________
+import { generateProductID } from '../../helpers/generateProductID';
+import { sendProduct } from '../../helpers/sendProduct';
+import { sendImage } from '../../helpers/sendImage';
 
+const AddProductForm = ({ setAddProduct }) => {
 
-const AddProductForm = () => {
+    const [sendData, setSendData] = useState(false);
+    const [warningMsg, setWarningMsg] = useState(false);
 
-    const [imageName, setImageName] = useState("");
-    const { setAddProduct } = useContext(addProductContext);
-
-    const productToAdd = useSelector((state) => state.addProduct);
     const dispatch = useDispatch();
-
-    const productsCollectionRef = collection(db, 'products');
     
-    const handleCancelBtnClick = () => {
-        setAddProduct(false);
-    }
+    const products = useSelector(state => state.productList);
+    const productToAdd = useSelector(state => state.addProduct);
+    const commentToAdd = useSelector(state => state.addComment);
 
-    const handleSubmit = async (e) => {
+    useEffect(() => {
+        dispatch(setInitialState()) // Setting initial state of product to be added
+
+        const productID = generateProductID(products);
+        dispatch(setProductId(productID));
+        dispatch(setProductIdForComment(productID));
+        dispatch(setCommentId(1));
+    }, []);
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const image = e.target.querySelector('#add-product-file').files[0];
-        await addDoc(productsCollectionRef, productToAdd);
-        if (image) {
-            const imageCollectionRef = ref(storage, `/images/${image.name}`);
-            await uploadBytes(imageCollectionRef, image);
+        if (commentToAdd.description) { dispatch(setComment(commentToAdd)) }
+        if (productToAdd.name &&
+            productToAdd.count &&
+            productToAdd.size.width &&
+            productToAdd.size.height &&
+            productToAdd.weight) {
+            setSendData(true);
+        } else {
+            setWarningMsg("Please note, you can skip only Browse the image and Comments fields, all other must be filled up")
         }
-        setAddProduct(false);
+        sendImage(e);
     }
 
-    const handleFileInputChange = (e) => {
-        const value = e.target.value;
-        setImageName(value);
-        dispatch(setImageUrl(e.target.files[0].name))
-    }
+    useEffect(() => {
+        if (sendData) {
+            sendProduct(productToAdd);
+            setSendData(false);
+            setAddProduct(false);
+            setWarningMsg(false);
+        }
+    }, [sendData]);
 
     return ( 
-        <form className="add-product-form" onSubmit={ (e) => handleSubmit(e) }>
-            <div className='file-upload'>
-                <label htmlFor='add-product-file'>Browse the image...</label>
-                <input 
-                    type='file' 
-                    name='image'
-                    id='add-product-file'
-                    onChange={ (e) => handleFileInputChange(e) }
-                />
-                <span>{ imageName }</span>
-            </div>
-
-            <div className='input-block'>
-                <label htmlFor='add-product-name'>Name</label>
-                <input 
-                    type='text' 
-                    name='name' 
-                    id='add-product-name' 
-                    required
-                    onChange={ (e) => dispatch(setName(e.target.value)) } 
-                />
-            </div>
-            
-            <div className='input-block'>
-                <label htmlFor='add-product-count'>Quantity</label>
-                <input 
-                    type='number' 
-                    min='0' 
-                    name='count' 
-                    id='add-product-count' 
-                    required
-                    onChange={ (e) => dispatch(setCount(e.target.value)) } 
-                />
-            </div>
-            
-            <div className='input-block'>
-                <label htmlFor='add-product-width'>Width, mm</label>
-                <input 
-                    type='number' 
-                    min='0' 
-                    name='width' 
-                    id='add-product-width' 
-                    required
-                    onChange={ (e) => dispatch(setWidth(e.target.value)) } 
-                />
-            </div>
-            
-            <div className='input-block'>
-                <label htmlFor='add-product-height'>Height, mm</label>
-                <input 
-                    type='number' 
-                    min='0' 
-                    name='height' 
-                    id='add-product-height' 
-                    required
-                    onChange={ (e) => dispatch(setHeight(e.target.value)) }
-                />
-            </div>
-            
-            
-            <div className='input-block'>
-                <label htmlFor='add-product-weight'>Weight, g</label>
-                <input 
-                    type='number' 
-                    min='0' 
-                    name='weight' 
-                    id='add-product-weight'
-                    required 
-                    onChange={ (e) => dispatch(setWeight(e.target.value)) }
-                />
-            </div>
-
-            <textarea 
-                placeholder="Write your comment here..."
-                onChange={ (e) => dispatch(setComments(e.target.value)) }
-            >
-            </textarea>
-
-            <div className='form-btns'>
-                <button type='button' onClick={ handleCancelBtnClick }>Cancel</button>
-                <button type='submit' >Confirm</button>
-            </div>
-        </form>
+        <motion.form 
+            className="add-product-form" 
+            onSubmit={ (e) => handleSubmit(e) }
+            initial={{ x: '100vw', opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+        >
+            <FileInput action={ setImageUrl } />
+            <NameInput action={ setName } />
+            <CountInput action={ setCount } />
+            <WidthInput action={ setWidth } />
+            <HeightInput action={ setHeight } />
+            <WeightInput action={ setWeight } />
+            <CommentInput />
+            <FormBtns setSomeState={ setAddProduct } />
+            { warningMsg && <span>{ warningMsg }</span>}
+        </motion.form>
     );
 }
 

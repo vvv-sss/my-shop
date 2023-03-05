@@ -9,14 +9,14 @@ const initialState = {
         "height": null
     },
     "weight": null,
-    "comments": ['']
+    "comments": []
 };
 
-export const productViewSlice = createSlice({
-    name: 'product-list',
+export const editProductFormSlice = createSlice({
+    name: 'edit-product',
     initialState,
     reducers: {
-        setProductView: (state, action) => {
+        setEditProduct: (state, action) => {
             return action.payload;
         },
         editImageUrl: (state, action) => {
@@ -36,10 +36,28 @@ export const productViewSlice = createSlice({
         },
         editWeight: (state, action) => {
             state.weight = action.payload;
+        },
+        removeComment: (state, action) => {
+            const id = action.payload;
+            state.comments = state.comments.filter(comment => comment.commentId !== id);
+        },
+        addComment: (state, action) => {
+            state.comments = [...state.comments, action.payload]
         }
     }
 });
 
-export const { setProductView, editImageUrl, editName, editCount, editWidth, editHeight, editWeight } = productViewSlice.actions;
+export const { 
+    setEditProduct, 
+    editImageUrl, 
+    editName, 
+    editCount, 
+    editWidth, 
+    editHeight, 
+    editWeight,
+    removeComment,
+    addComment
 
-export default productViewSlice.reducer;
+} = editProductFormSlice.actions;
+
+export default editProductFormSlice.reducer;

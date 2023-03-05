@@ -1,21 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    "imageUrl": '',
-    "name": '',
-    "count": null,
-    "size": {
-        "width": null,
-        "height": null
+    'productId': null,
+    'name': '',
+    'count': null,
+    'size': {
+        'width': null,
+        'height': null
     },
-    "weight": null,
-    "comments": ['']
+    'weight': null,
+    'comments': []
 }
 
 export const addProductSlice = createSlice({
     name: 'add-product',
     initialState,
     reducers: {
+        setInitialState: () => {
+            return initialState;
+        },
+        setProductId: (state, action) => {
+            state.productId = action.payload;
+        },
         setImageUrl: (state, action) => {
             state.imageUrl = action.payload;
         },
@@ -34,12 +40,23 @@ export const addProductSlice = createSlice({
         setWeight: (state, action) => {
             state.weight = action.payload;
         },
-        setComments: (state, action) => {
+        setComment: (state, action) => {
             state.comments = [action.payload];
         }
     }
 });
 
-export const { setImageUrl, setName, setCount, setWidth, setHeight, setWeight, setComments } = addProductSlice.actions;
+export const {
+    setInitialState,
+    setProductId,
+    setImageUrl, 
+    setName, 
+    setCount, 
+    setWidth, 
+    setHeight, 
+    setWeight,
+    setComment
+
+} = addProductSlice.actions;
 
 export default addProductSlice.reducer;

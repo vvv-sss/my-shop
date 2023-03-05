@@ -1,12 +1,14 @@
-import Logo from '../assets/logo.png';
+// ___Framer Motion___________________________________________________________________________________________________
+import { motion } from "framer-motion";
 
 const Header = () => {
     return ( 
-        <header>
-            <img src={ Logo } alt="Logo icon" />
+        <motion.header 
+            initial={{ width: '0', opacity: 0 }}
+            animate={{ width: '100%', opacity: 1 }}
+        >
             <h1>My Shop</h1>
-            <h2>Product list</h2>
-        </header>
+        </motion.header>
     );
 }
 

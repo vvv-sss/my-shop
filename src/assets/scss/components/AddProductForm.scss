@@ -1,66 +1,22 @@
 .add-product-form {
-    display: flex;
-    flex-direction: column;
-    width: 30rem;
-    margin: 0 auto;
+    width: 100%;
     padding: 1rem;
+    padding-bottom: 2rem;
+    border-radius: 3rem;
+    margin-right: -3rem;
+    margin-bottom: 3rem;
+    -webkit-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    background-image: $violet-gradient;
 
-    .file-upload {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 2rem;
-    
-        label {
-            cursor: pointer;
-        }
-    
-        #add-product-file {
-            display: none;
-        }  
-    
-        span {
-            color: grey;
-        }
-    }
-
-    .input-block {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-
-        input {
-            width: 20rem;
-            border: none;
-            border-bottom: 1px solid grey;
-            outline: none;
-            margin-bottom: 0.5rem;
-            background-color: transparent;
-            text-align: center;
-        }
-    }
-
-    textarea {
-        background-color: transparent;
-        border: 1px solid grey;
-        border-radius: 0.5rem;
-        padding: 0.5rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        outline: none;
-    }
-
-    .form-btns {
-        display: flex;
-        gap: 1rem;
-        justify-content: space-between;
-    
-        button {
-            flex-basis: 50%;
-            padding: 1rem 0;
-            background-color: transparent;
-            border: 1px solid grey;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
+    span {
+        display: block;
+        width: 75%;
+        max-width: 30rem;
+        margin-top: 0.5rem;
+        margin-left: 1.25rem;
+        color: $color-white-faded;
+        font-size: $font-size-S;
+        font-style: italic;
     }
 }

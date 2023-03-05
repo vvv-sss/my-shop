@@ -1,0 +1,31 @@
+@media only screen and (min-width: 700px) {
+    main {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+                align-items: start;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    
+    .product-list,
+    .product-view,
+    .add-product-form,
+    .edit-product-form {
+        padding-left: 4rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+
+    .product-list,
+    .product-view,
+    .add-product-form,
+    .edit-product-form {
+        padding-left: 8rem;
+    }
+}

@@ -1,18 +1,7 @@
 body {
-    padding: 1rem;
     font-family: 'Poppins', sans-serif;
-    background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
-    color: hsla(0, 0%, 0%, 85%);
+    background-image: $light-gradient;
     background-attachment: fixed;
-}
-
-main {
-    display: grid;
-}
-
-@media only screen and (min-width: 930px) {
-    main {
-        grid-template-columns: 20rem 1fr;
-        gap: 1rem;
-    }
+    color: $color-dark-gray;
+    overflow-x: hidden;
 }

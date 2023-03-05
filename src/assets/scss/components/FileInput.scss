@@ -1,0 +1,33 @@
+.file-upload {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+
+    label {
+        @include label;
+
+        img {
+            display: inline-block;
+            position: relative;
+            top: 0.55rem;
+            left: 0.75rem;
+            width: 2rem;
+            -webkit-filter: $color-for-filter-white;
+                    filter: $color-for-filter-white;
+        }
+    }
+
+    #add-product-file {
+        display: none;
+    }  
+
+    span {
+        color: $color-white-faded;
+    }
+}
