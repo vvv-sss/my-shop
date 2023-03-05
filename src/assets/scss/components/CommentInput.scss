@@ -8,4 +8,20 @@
     margin: 1rem;
     background-color: transparent;
     color: $color-white;
+
+    &::-webkit-input-placeholder {
+        color: $color-white-faded;
+    }
+    
+    &:-moz-placeholder {
+        color: $color-white-faded;
+    }
+    
+    &::-moz-placeholder {
+        color: $color-white-faded;
+    }
+    
+    &:-ms-input-placeholder {
+        color: $color-white-faded;
+    }
 }
