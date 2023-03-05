@@ -1,15 +1,13 @@
 // ___Redux___________________________________________________________________________________________________________
 import { useSelector, useDispatch } from 'react-redux';
-import { setProducts } from './productListSlice';
 // ___Framer Motion___________________________________________________________________________________________________
 import { motion } from "framer-motion";
 // ___Components______________________________________________________________________________________________________
 import SortInput from '../SortInput';
 // ___Helpers_________________________________________________________________________________________________________
-import { getProducts } from "../../helpers/getProducts";
 import { removeProduct } from "../../helpers/removeProduct";
 
-const ProductList = ({ setProductViewActive, setProductId }) => {   
+const ProductList = ({ setProductViewActive, setProductId, setProductRemoved }) => {   
 
     const products = useSelector((state) => state.productList);
     const dispatch = useDispatch();
@@ -22,8 +20,7 @@ const ProductList = ({ setProductViewActive, setProductId }) => {
     const handleDeleteClick = (id) => {
         if (window.confirm("Do you really want to remove this product?")) {
             removeProduct(id);
-            getProducts()
-                .then(data => dispatch(setProducts(data)));
+            setProductRemoved(true);
         }
     }
 

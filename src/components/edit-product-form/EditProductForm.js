@@ -57,9 +57,6 @@ const EditProductForm = ({ setEdit, productId }) => {
 
     const handleRemoveCommentClick = (e, id) => {
         dispatch(removeComment(id));
-        // if (window.confirm('Do you really want to remove this comment?')) {
-        //     setSendData(true);
-        // }
         e.target.parentElement.style.display = 'none';
     }
 

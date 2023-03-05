@@ -18,13 +18,15 @@ const Main = () => {
     const [productId, setProductId] = useState(null);
     const [productViewActive, setProductViewActive] = useState(false);
     const [edit, setEdit] = useState(false);
+    const [productRemoved, setProductRemoved] = useState(false);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         getProducts()
             .then(data => dispatch(setProducts(data)));
-    }, [addProduct, edit]);
+        setProductRemoved(false);
+    }, [addProduct, edit, productRemoved]);
 
     return ( 
         <main>
@@ -37,6 +39,7 @@ const Main = () => {
                 <ProductList 
                     setProductViewActive={ setProductViewActive } 
                     setProductId={ setProductId }
+                    setProductRemoved={ setProductRemoved }
                 />
             }
             { addProduct && 
